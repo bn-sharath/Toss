@@ -5,6 +5,7 @@
     <string name="todo">images_conentdescription</string>
     <string name="head">Head</string>
     <string name="tail">Tail</string>
+    <string name="image_text">TOSS</string>
     <string name="palyerA">Player A team</string>
     <string name="palyerB">Player B team</string>
 </resources>
