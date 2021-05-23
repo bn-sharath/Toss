@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Toss</string>
+    <string name="todo1">TODO</string>
+    <string name="welcome">MISSING COIN THEN USE TOSS</string>
+    <string name="quote">THE SPRINT IS SOMETIMES LIKE A TOSS OF A COIN. SOMETIMES IT\'S HEADS, AND SOMETIMES IT\'S TAILS</string>
+    <string name="todo">TODO</string>
+</resources>
