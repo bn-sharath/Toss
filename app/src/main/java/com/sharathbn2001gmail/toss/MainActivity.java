@@ -7,21 +7,35 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.Random;
+import java.util.Random;//this is for selecting head or tail randomly
 
+import static com.sharathbn2001gmail.toss.R.drawable.ic_baseline_refresh_24;
+
+//Mainactivity class starts here
 public class MainActivity extends AppCompatActivity {
-    ImageView coin_image;
+    //declaration of Imageview
+    ImageView coin_image, refresh;
+
+    //declaration of Button
     Button ahead_button, atail_button, bhead_button, btail_button;
+
+    //declaration of Textview
     TextView resultA, resultB, imagecenter_toss;
 
+    //declaration of color for buttons
     int color, initial_color, red, green;
+
+    //declaration of button status or image status
+    //which is used for checking whether button or image are click once or not
     boolean ahead, atail, bhead, btail, isselect, istossed;
 
+    //constructor, which is used to initialise the variable
     public MainActivity() {
         green = 0xFF00FF00;
         red = 0xFFFF0000;
-        color = 0xFFFB8C00;
+        color = 0xFFFF960A;
         initial_color = 0xFFFFBB33;
         isselect = false;
         istossed = false;
@@ -30,9 +44,22 @@ public class MainActivity extends AppCompatActivity {
         bhead = false;
         btail = false;
     }
-    //variables for initialing the head and tail
 
+    //when once coin is tossed ,this user-defined reset method is used to reset all the parameter to initial state
+    @SuppressLint("SetTextI18n")
+    void reset() {
+        imagecenter_toss.setText("TOSS");
+        resultA.setText("");
+        resultB.setText("");
+        isselect = false;
+        istossed = false;
+        ahead = false;
+        atail = false;
+        bhead = false;
+        btail = false;
+    }
 
+    //this user-defined method is used to set the button color
     protected void setButtonColors() {
 
         if (ahead) {
@@ -45,14 +72,21 @@ public class MainActivity extends AppCompatActivity {
             atail_button.setBackgroundColor(color);
             ahead_button.setBackgroundColor(initial_color);
             btail_button.setBackgroundColor(initial_color);
+        } else {
+            ahead_button.setBackgroundColor(initial_color);
+            btail_button.setBackgroundColor(initial_color);
+            bhead_button.setBackgroundColor(initial_color);
+            atail_button.setBackgroundColor(initial_color);
         }
     }
 
 
+    //this is build-in oncreate method
+    //when this activity start, all the set of code in oncreate method is executed
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);//set the layout build-in
 
 
         //textview.... initialising textview object to corresponding variable
@@ -68,14 +102,18 @@ public class MainActivity extends AppCompatActivity {
 
         //textview.... initializing imageview object to corresponding variable
         coin_image = findViewById(R.id.coin);
+        refresh = findViewById(R.id.reset);
 
+        //whenever coin image is clicked this, build-in method execute
+        //inside we write code after clicking if
         coin_image.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 if (!istossed && isselect) {
                     imagecenter_toss.setText("");
-                    coin_image.animate().setDuration(5000);
-                    coin_image.animate().rotationXBy(14400f);
+                    coin_image.animate().setDuration(4500);
+                    coin_image.animate().rotationXBy(14040f);
                     istossed = true;
                     coin_image.animate().withEndAction(new Runnable() {
                         @SuppressLint("SetTextI18n")
@@ -84,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                             Random random = new Random();
                             boolean ishead = random.nextBoolean();
                             if (ishead) {
-                                imagecenter_toss.setText("head");
+                                imagecenter_toss.setText("HEAD");
                                 if (ahead) {
                                     resultA.setText("PLAYER 'A' WON");
                                     resultB.setText("PLAYER 'B' LOSE");
@@ -102,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 }
                             } else {
-                                imagecenter_toss.setText("tail");
+                                imagecenter_toss.setText("TAIL");
                                 if (atail) {
                                     resultA.setText("PLAYER 'A' WON");
                                     resultB.setText("PLAYER 'B' LOSE");
@@ -119,15 +157,31 @@ public class MainActivity extends AppCompatActivity {
                                     ahead_button.setBackgroundColor(red);
                                 }
                             }
-
+                            refresh.setImageDrawable(getResources().getDrawable(ic_baseline_refresh_24));
                         }
                     });
+
+                } else if (!isselect) {
+                    Toast.makeText(getApplicationContext(), "select the your choice", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         });
 
+        //whenever refresh image is clicked, this build-in method execute
+        //inside we write code after clicking if
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reset();
+                setButtonColors();
+                refresh.setImageDrawable(null);
+            }
+        });
 
-        // when button is clicked ,methods for what to do
+        //whenever button is clicked, this build-in method execute
+        //inside we write code after clicking if
         ahead_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,8 +191,8 @@ public class MainActivity extends AppCompatActivity {
                     bhead = false;
                     btail = true;
                     isselect = true;
-//                color= 0xFFFB8C00;
                     setButtonColors();
+                    Toast.makeText(getApplicationContext(), "Toss the coin", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -152,8 +206,8 @@ public class MainActivity extends AppCompatActivity {
                     atail = true;
                     ahead = false;
                     isselect = true;
-//                color= 0xFFFB8C00;
                     setButtonColors();
+                    Toast.makeText(getApplicationContext(), "Toss the coin", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -167,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
                     btail = false;
                     bhead = true;
                     isselect = true;
-//                color= 0xFFFB8C00;
+                    Toast.makeText(getApplicationContext(), "Toss the coin", Toast.LENGTH_SHORT).show();;
                     setButtonColors();
                 }
             }
@@ -182,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
                     ahead = true;
                     atail = false;
                     isselect = true;
-//                color= 0xFFFB8C00;
+                    Toast.makeText(getApplicationContext(), "Toss the coin", Toast.LENGTH_SHORT).show();
                     setButtonColors();
                 }
             }
@@ -190,21 +244,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
-
-//        imagecenter_toss.setOnClickListener(new View.OnClickListener() {
-//            @SuppressLint("SetTextI18n")
-//            @Override
-//            public void onClick(View v) {
-//                if (!istossed && isselect) {
-//                    imagecenter_toss.setText("");
-//                    coin_image.animate().setDuration(2000);
-//                    coin_image.animate().rotationXBy(360f);
-//                    imagecenter_toss.setText("Head");
-//                    istossed = true;
-//                }
-//            }
-//
-//        });
 
 
 

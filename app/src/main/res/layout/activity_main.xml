@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/ahead"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.545"
+        app:layout_constraintVertical_bias="0.498"
         app:srcCompat="@drawable/coin2" />
 
     <Button
@@ -84,10 +84,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/coin"
         app:layout_constraintEnd_toEndOf="@+id/atail"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="@+id/ahead"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.614" />
+        app:layout_constraintVertical_bias="0.672" />
 
     <TextView
         android:id="@+id/player_b"
@@ -102,7 +102,7 @@
         app:layout_constraintEnd_toEndOf="@+id/btail"
         app:layout_constraintStart_toStartOf="@+id/bhead"
         app:layout_constraintTop_toBottomOf="@+id/coin"
-        app:layout_constraintVertical_bias="0.462" />
+        app:layout_constraintVertical_bias="0.336" />
 
     <TextView
         android:id="@+id/tossing"
@@ -134,9 +134,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/player_a"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85" />
 
     <TextView
         android:id="@+id/result_b"
@@ -145,8 +146,22 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player_b" />
+        app:layout_constraintTop_toBottomOf="@+id/player_b"
+        app:layout_constraintVertical_bias="0.18" />
+
+    <ImageView
+        android:id="@+id/reset"
+        android:layout_width="77dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="166dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="168dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result_b" />
 
 </android.support.constraint.ConstraintLayout>
