@@ -33,16 +33,22 @@ public class MainActivity extends AppCompatActivity {
 
     //constructor, which is used to initialise the variable
     public MainActivity() {
-        green = 0xFF00FF00;
+        green = 0xFF00FF00;// color values initialisation
         red = 0xFFFF0000;
         color = 0xFFFF960A;
         initial_color = 0xFFFFBB33;
+
+        //this is used to crack, whether user has selected the choice or not.this cracks button are presses once only.
         isselect = false;
+
+        //this is used check whether user tossed or not. By this we can toss once.
         istossed = false;
-        ahead = false;
-        atail = false;
-        bhead = false;
-        btail = false;
+
+        //this is the choice of user
+        ahead = false;//this is true when A player choice head
+        atail = false;//this is true when A player choice tail
+        bhead = false;//this is true when B player choice head
+        btail = false;//this is true when B player choice tail
     }
 
     //when once coin is tossed ,this user-defined reset method is used to reset all the parameter to initial state
@@ -61,18 +67,25 @@ public class MainActivity extends AppCompatActivity {
 
     //this user-defined method is used to set the button color
     protected void setButtonColors() {
-
-        if (ahead) {
+        //choice head by A or tail by B are the same
+        if (ahead) //if (btail) both is same
+        {
+            //this color is set when A choice head or B choice tail
             ahead_button.setBackgroundColor(color);
             btail_button.setBackgroundColor(color);
             bhead_button.setBackgroundColor(initial_color);
             atail_button.setBackgroundColor(initial_color);
-        } else if (bhead) {
+        }
+        //choice tail by A or head by B are the same
+        else if (bhead)//if (atail) both is same
+        {
+            //this color is set when A choice tail or B choice head
             bhead_button.setBackgroundColor(color);
             atail_button.setBackgroundColor(color);
             ahead_button.setBackgroundColor(initial_color);
             btail_button.setBackgroundColor(initial_color);
         } else {
+            //initialisation of color to initial state
             ahead_button.setBackgroundColor(initial_color);
             btail_button.setBackgroundColor(initial_color);
             bhead_button.setBackgroundColor(initial_color);
